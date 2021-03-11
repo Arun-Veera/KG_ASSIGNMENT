@@ -1,0 +1,96 @@
+.add-slot{
+    top: 6px;
+    position: relative;
+}
+
+.cb-tag {
+    list-style: none;
+    padding: 20px;
+}
+.cb-tag{
+  display: inline;
+}
+.cb-tag label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin: 3px 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+.cb-tag label {
+    padding: 10px 15px 10px 40px;
+    cursor: pointer;
+}
+
+.cb-tag input[type="radio"]:checked + label {
+    border:none;
+    background-color: #508aeb;
+    color: #fff;
+    transition: all .2s;
+}
+
+.cb-tag input[type="radio"] {
+  display: absolute;
+}
+.cb-tag input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.cb-tag input[type="radio"]:disabled + label{
+  opacity: .5;
+  cursor: not-allowed;
+  transition: all .2s;
+  pointer-events: none;
+}
+.cb-tag input[type="radio"] 
++ label:before {
+  height:15px;
+  width:15px;
+  content:"";
+  position:absolute;
+  border-radius: 15px;
+  margin-left:-25px;
+  border: 1px solid grey
+}
+
+.cb-tag input[type="radio"]:checked 
++ label:before {
+  height:20px;
+  width:20px;
+  font-family: 'Material Icons';
+  content:"\e5c8";
+  position:absolute;
+  border-radius: 15px;
+  margin-left:-25px;
+  border: none;
+  font-size: 23px;
+}
+
+.card {
+  background-color: white imp !important;
+}
+
+.breadcrumb {
+  background-color: #e0e3ee !important;
+}
+
+.text-blue {
+    color: #508aeb !important;
+    font-size: 15px;
+}
+
+
+.container {
+  background-color: #e0e3ee;  
+}
+

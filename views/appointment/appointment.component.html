@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item active h6" *ngFor="let item of breadCrumpList" routerLink="item.route" routerLinkActive="router-link-active"  aria-current="page">{{item.name}}</li>
+  </ol>
+</nav>
+<main class="container">
+  <div class="row">
+    <div class="col-sm-3 card">
+        <mat-form-field appearance="legacy" class="mt-3">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-sm-9 card">
+      <div class="d-flex text-muted pt-3">
+        <span class="material-icons">
+          dark_mode
+          </span>        <div class="ml-3 pb-3 small border-bottom w-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <strong class="text-gray-dark">Morning</strong>
+            <button type="button" class="btn btn-link" (click) ="openModal()"><span class="material-icons add-slot">
+                add
+              </span> Add Slots</button>
+          </div>
+          <span class="d-block">9:00 AM to 12:00PM</span>
+        </div>
+      </div>
+      <div class="cb-tag">
+        <span *ngFor="let time of mTimeSlot; let i=index">
+          <input type="radio" id={{i}} value="cb1" name="time" [disabled]= 'time.disabled' checked  ><label for={{i}} >{{time?.fromTime}}</label>
+        </span>
+      </div>
+      <div class="d-flex text-muted pt-3">
+        <span class="material-icons">
+          light_mode
+          </span>        <div class="ml-3 pb-3 small border-bottom w-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <strong class="text-gray-dark">Evening</strong>
+          </div>
+          <span class="d-block">05:00 PM to 09:00 PM</span>
+        </div>
+      </div>
+      <div class="cb-tag">
+        <span *ngFor="let time of eTimeSlot; let i=index">
+          <input type="radio" id={{i+50}} value="cb1" name="time1" [disabled]= 'time.disabled'  checked ><label for={{i+50}} >{{time?.fromTime}}</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+<ng-template #timeSlotModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="timeSlotForm" >
+      <div class="row" >
+        <div class="col-6">
+          <label for="from-time" class="form-label">From time</label>
+          <input type="time"   id="from-time" formControlName="fromTime" (change) ="onChange()" class="form-control"  min="09:00" max= "21:00"  placeholder="First name" aria-label="First name">
+        </div>
+        <div class="col-6">
+          <label for="to-time" class="form-label">To time</label>
+          <input type="time" id="to-time" formControlName="toTime" class="form-control disabled" min="09:00" max= "21:00" placeholder="Last name" aria-label="Last name" >
+        </div>
+      </div>
+      </form>
+      <div class="row align-items-center mt-4" >
+        <div class="col-12"><button class="btn btn-primary" (click) ="onSubmit()">Add TimeSlot</button></div>
+      </div>
+  </div>
+</ng-template>
